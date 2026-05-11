@@ -1,0 +1,86 @@
+ <% layout("/layouts/boilerplate.ejs") %>
+  <% block('title').append('Profile-NCC') %>
+ <% block('style').append('css/profile.css') %>
+<body>
+
+<div class="card">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatars">
+      <img src="<%= currUser.img.url %>" class="avatar"></img>
+      <a href="/profile/edit-img/<%= currUser._id %>"><button class=" edit-img">edit</button></a>
+    </div>
+    <div class="hero-info">
+      <div class="club-tag">Nihalwadi Cricket Club</div>
+      <div class="player-name"><%= currUser.name.slice(0,-1) %></div>
+      <div class="p.layerun"><%= currUser.username %></div>
+      <div class="role-badge">
+        <div class="role-dot"></div>
+        <%= currUser.role %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Meta info row -->
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Age</span>
+        <span class="meta-val"> <%= currUser.age %></span>
+      </div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">
+        <span class="meta-label">Jersey</span>
+        <span class="meta-val"> <%= currUser.jerseyNo %></span>
+      </div>
+      
+    </div>
+
+    <!-- Playing Style -->
+    <div class="section-title">Playing Style</div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-type bat">Batting</div>
+        <div class="skill-val"> <%= currUser.batting %></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-type bowl">Bowling</div>
+        <div class="skill-val"> <%= currUser.bowling %></div>
+      </div>
+
+    </div>
+
+    <!-- Career Stats -->
+    <!-- <div class="section-title">Career Stats</div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">84</div>
+        <div class="stat-lbl">Matches</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2,340</div>
+        <div class="stat-lbl">Runs</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">67</div>
+        <div class="stat-lbl">Wickets</div>
+      </div>
+    </div> -->
+    <form action="/profile/edit/<%= currUser._id %>" method="get" class="mb-1">
+          <button class="btn btn-primary">Edit Details</button>
+      
+    </form>
+    <a href="/profile/edit-password/<%= currUser._id %>"> 
+         <button class="btn btn-primary">Change Password</button>
+</a>
+
+  </div>
+</div>
+
+</body>
+

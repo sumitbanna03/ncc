@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+   
+}
+.container{
+    background: linear-gradient(#28df96,#2fa5d4);
+    box-shadow: 0  0 5px 0.5px black;
+    padding-bottom: 10px;
+    width: 90vw;
+    max-width: 350px;
+    
+    border-radius: 20px;
+    margin-top: 10vw;
+
+}
+h1{
+    margin-bottom: 20px;
+}
+.form-control{
+    border-radius: 6px;
+    margin: 10px;
+    height: 45px;
+    width: 90%; 
+    border: 1px solid black;
+}
+label{
+     margin-left: 10px;
+    height: 40px;
+    width: 80%;
+}
+button{
+    margin: 10px;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    background-color: rgb(42, 60, 148);
+    color: white;
+
+}

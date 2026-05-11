@@ -1,0 +1,29 @@
+<% layout("/layouts/boilerplate.ejs") %>
+  <% block('title').append('Edit image') %>
+  <form action="/profile/edit-img/<%= player.id %>?_method=PATCH" method="POST" enctype="multipart/form-data" class=" needs-validation" novalidate>
+    <label for="img" class="form-label ps-3">Upload your Photo:</label>
+    <input type="file" class="form-control" accept="image/*" name="img" required>
+    <div class="invalid-feedback">Select photo!</div>
+    <button type="submit" class="btn btn-primary mt-3 ms-3">Save</button>
+  </form>
+    <script>
+        (() => {
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+     </script>

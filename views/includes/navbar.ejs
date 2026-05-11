@@ -1,0 +1,94 @@
+
+ 
+
+
+<nav>
+  <div class="nav-inner">
+
+    <!-- Logo (left) -->
+    <a href="/" class="logo">
+      <img src="https://res.cloudinary.com/drupkujzt/image/upload/v1778130278/ncb_logo_h6eywy.jpg" class="logo-mark" alt="">
+      <span class="logo-text">N<span>C</span>C</span>
+    </a>
+
+    <!-- Desktop nav links (center) -->
+    <ul class="nav-links">
+      <li><a href="/" class="<%- block('homeActive').toString() %>">Home</a></li>
+      <li><a href="/players" class="<%- block('playersActive').toString() %>">Players</a></li>
+      <li><a href="/matches" class="<%- block('matchesActive').toString() %>">Matches</a></li>
+      
+    </ul>
+
+    <!-- Desktop search + User icon (right) -->
+   <div class="nav-right">
+              <%- block('desktopSearch').toString() %>
+      <!-- User Profile Button -->
+      <div style="position:relative;">
+        <button class="user-btn" id="userBtn" aria-label="User profile" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+          <span class="user-label">Account</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-header">
+             
+            <div class="profile-avatar">
+              <% if(currUser){ %>
+              <img style="background-size: cover; height: 100%;width: 100%;border-radius: 50%;" src="<%= currUser.img.url %>" alt="">
+              <% }else{ %>
+              <i class="fa-solid fa-user"></i>
+              <% } %>
+            </div>
+            
+            <div class="profile-info">
+             <% if(currUser){ %>
+              <div class="profile-name"><%= currUser.name.slice(0,-1) %></div>
+              <div class="profile-email"><%= currUser.username %></div>
+               <% } else{ %>
+            <a href="/login" class="dropdown-item danger" style="font-size: large; color: #f83131;"><i class="fa-solid fa-arrow-left-from-bracket" ></i> Login</a>
+            <% } %>
+            </div>
+          </div>
+          <div class="dropdown-items">
+              <% if(currUser){ %>
+
+            <a href="/profile" class="dropdown-item"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+      
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+            <% } %>
+           
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <ul class="mobile-links">
+        <li><a href="/" class="<%- block('homeActive').toString() %>"><span class="dot"></span>Home</a></li>
+        <li><a href="/players" class="<%- block('playersActive').toString() %>"><span class="dot"></span>Players</a></li>
+        <li><a href="/matches" class="<%- block('matchesActive').toString() %>"><span class="dot"></span>Matches</a></li>
+        </ul>
+      <!-- Search bar at bottom of dropdown -->
+              <%- block('mobileSearch').toString() %>
+
+    </div>
+  </div>
+</nav>
+
+
+

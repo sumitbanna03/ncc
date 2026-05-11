@@ -1,0 +1,232 @@
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      background: #f4f2eb;
+      display: flex;
+      flex-wrap: wrap;
+      /* flex-flow: column; */
+      /* align-items: flex-start; */
+      justify-content: center;
+      /* padding: 2.5rem 1rem; */
+    }
+
+    .card {
+      width: 80%;
+      background: #ffffff;
+      border: 1px solid #e0ddd4;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    /* ── Hero Banner ── */
+    .hero {
+      background: #e18a3e;
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      /* align-items: flex-end; */
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      border: 40px solid #df460435;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 40%;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 25px solid #df460435;
+    }
+
+    .avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+     background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 700;
+      color: #c0dd97;
+      flex-shrink: 0;
+      border: 2.5px solid rgba(155, 234, 90, 0.427);
+      position: relative; z-index: 1;
+    }
+    .edit-img{
+      border-radius: 5px;
+      border: none;
+      height: 30px;
+      width: 80px;
+      margin-top: 2px;
+      color: #a3f206;
+      background-color: #239c4f87;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+
+    }
+    .hero-info { position: relative; z-index: 1; }
+
+    .club-tag {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #425f20;
+      margin-bottom: 6px;
+    }
+
+    .player-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #0e0e0e;
+      line-height: 1;
+      margin-bottom: -2px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,153,34,0.18);
+      border: 0.5px solid rgba(99,153,34,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #104927;
+      margin-top: 3px;
+    }
+
+    .role-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #104523;
+    }
+
+    /* ── Body ── */
+    .body { padding: 1.75rem 2rem; }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid #e8e6de;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 11px; color: #888780; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
+    .meta-val { font-size: 14px; font-weight: 500; color: #2c2c2a; }
+
+    .meta-sep {
+      width: 1px; height: 32px;
+      background: #e0ddd4;
+      margin: 0 4px;
+    }
+
+    /* ── Section Title ── */
+    .section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888780;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Skills Grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    @media (max-width: 460px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .card{
+        width: 100%;
+      }
+    }
+
+    .skill-card {
+      background: #f8f6f0;
+      border: 1px solid #e8e6de;
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .skill-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .skill-icon.bat { background: #eaf3de; }
+    .skill-icon.bowl { background: #faeeda; }
+
+    .skill-type {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .skill-type.bat { color: #3b6d11; }
+    .skill-type.bowl { color: #854f0b; }
+
+    .skill-val {
+      font-size: 14px;
+      font-weight: 400;
+      color: #2c2c2a;
+      line-height: 1.4;
+    }
+
+    /* ── Stats ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-top: 1.75rem;
+      border-top: 1px solid #e8e6de;
+    }
+
+    .stat-box {
+      background: #f8f6f0;
+      border: 1px solid #e8e6de;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #2c2c2a;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: #888780;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }

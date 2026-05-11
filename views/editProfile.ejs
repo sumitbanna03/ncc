@@ -1,0 +1,100 @@
+ <% layout("/layouts/boilerplate.ejs") %>
+<% block('title').append('Edit-Profile') %>
+
+ <form action="/profile/<%= player.id %>?_method=PATCH" method="POST"  novalidate class=" row g-3 needs-validation" >
+  <% player.name = player.name.slice(0,-1) %>
+     <br><br> 
+     <div class="col-md-6">
+       <label for="" class="form-label ps-3"> name:</label>
+      <input type="text" name="name" required class="form-control" value="<%= player.name %>">
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Enter player's name
+    </div>
+     </div>
+     <div class="col-md-6">
+       <label for="" class="form-label ps-3"> username:</label>
+      <input type="text"  name="username" required class="form-control" value="<%= player.username %>">
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Enter player's username
+    </div>
+     </div>
+     
+    <!-- Role Selection -->
+<div class="col-md-6">
+    <label for="role" class="form-label ps-3">Select the role:</label>
+    <select id="role" name="role" required class="form-select">
+        <option value="Batter" <%= player.role === 'Batter' ? 'selected' : '' %>>Batter</option>
+        <option value="Bowler" <%= player.role === 'Bowler' ? 'selected' : '' %>>Bowler</option>
+        <option value="All-Rounder" <%= player.role === 'All-Rounder' ? 'selected' : '' %>>All-Rounder</option>
+        <option value="Wicket-Keeper" <%= player.role === 'Wicket-Keeper' ? 'selected' : '' %>>Wicket Keeper</option>
+    </select>
+</div>
+
+<!-- Batting Selection -->
+<div class="col-md-6">
+    <label for="batting" class="form-label ps-3">Batting:</label>
+    <select id="batting" name="batting" required class="form-select">
+        <option value="Right-Handed" <%= player.batting === 'Right-Handed' ? 'selected' : '' %>>Right-Handed</option>
+        <option value="Left-Handed" <%= player.batting === 'Left-Handed' ? 'selected' : '' %>>Left-Handed</option>
+    </select>
+</div>
+
+<!-- Bowling Selection -->
+<div class="col-md-6">
+    <label for="bowling" class="form-label ps-3">Bowling:</label>
+    <select id="bowling" name="bowling" required class="form-select">
+        <option value="Right Arm Fast" <%= player.bowling === 'Right Arm Fast' ? 'selected' : '' %>>Right Arm Fast</option>
+        <option value="Left Arm Fast" <%= player.bowling === 'Left Arm Fast' ? 'selected' : '' %>>Left Arm Fast</option>
+        <option value="Right Arm Spin" <%= player.bowling === 'Right Arm Spin' ? 'selected' : '' %>>Right Arm Spin</option>
+        <option value="Left Arm Spin" <%= player.bowling === 'Left Arm Spin' ? 'selected' : '' %>>Left Arm Spin</option>
+        <option value="NA" <%= player.bowling === 'NA' ? 'selected' : '' %>>No</option>
+    </select>
+</div>
+             <br><br>
+      <div>
+          <label for="age" class="form-label ps-3"> Age:</label>
+
+       <input type="number" placeholder="ex:- 22" id="age" name="age"  class="form-control" value="<%= player.age %>" required >
+        <div class="invalid-feedback">
+      Enter player's age!
+    </div>
+      </div>
+      <br><br>
+     <label for="jerseyNo" class="form-label ps-3">Jersey no. :</label>
+
+       <input type="number" placeholder="ex:- 45" id="jerseyNo" name="jerseyNo"  class="form-control" value="<%= player.jerseyNo %>" required>
+        <div class="invalid-feedback">
+      Enter player's jersey number!
+    </div><br><br>
+     
+   
+        <button class="btn ms-3" style=" width: 200px;border-radius: 5px; background-color: #12203e; color:white;" type="submit">Save</button>
+     </form>    
+      <script>
+        (() => {
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+     </script>
+

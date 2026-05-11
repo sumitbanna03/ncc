@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerplate.ejs") %>
+ <% block('title').append('Matches') %>
+
+ <% block('style').append('/css/matches.css') %>
+ <%- block('desktopSearch').append('  <div class="desktop-search"<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" class="searchInput" placeholder="Search…"/></div>') %>
+ <% block('mobileSearch').append(' <div class="mobile-search"> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>  <input type="text" class="searchInput" placeholder="Search…"/> </div>' )%>
+  <% block('script').append('<script src="js/matches.js"></script>') %>
+  <% block('matchesActive').append('active') %>
+ 
+
+
+<body>
+   
+<h2 style="height: 80px; text-align: center; line-height: 100px; background-color: #db6f02; color: #F8FAFC; " >All NCC Matches:</h2>
+<div class="matches" id="results">
+  <% if(matches.length == 0){%>
+    <p>there are no matches yet!</p>
+  <%}%>
+   <% for(match of matches){ %>
+            <%match.t1Name = match.t1Name.slice(0, -1);%>
+            <% match.t2Name = match.t2Name.slice(0, -1);%>
+
+   <div class="match">
+        
+    <div class="t-name"><h3><%=match.t1Name %></h3><h3><%=match.t2Name %></h3>
+     <% if(currUser && currUser.isAdmin){ %>
+      <form action="/matches/<%= match._id %>?_method=DELETE" 
+        method="POST"
+        onsubmit="return confirm('You want to delete this match?');"
+        >
+     <button class="cut" style="color: black;background: none;border: none;"><i class="fa-solid fa-xmark cut-icon"></i></button> 
+      </form>
+      <%}  %>
+    </div>
+    <div class="scores">
+      <p class="score">
+      <%=match.t1Runs %>/<%=match.t1Wickets %> (<%=match.t1Overs %>)
+      </p>
+      <p class="score">
+         <%=match.t2Runs %>/<%=match.t2Wickets %> (<%=match.t2Overs %>)
+        </p>
+      </div>
+      <p class="winLine">
+       <% if(match.t1Runs>match.t2Runs) {%>
+        <%=match.t1Name  %> won by <%=match.t1Runs - match.t2Runs%> runs
+        <% } else if(match.t1Runs<match.t2Runs){ %>
+            <%=match.t2Name %> won by <%= 10 - match.t2Wickets %> wickets
+          <%}else{ %>
+            Match draw
+            <%}%>
+        </p>
+      <div class="potm">POTM:- <%=match.motm %> <span class="date"><%=match.date %></span></div>
+    </div> 
+  <% }; %>
+</div><br>
+  <% if(currUser && currUser.isAdmin){ %>
+    <form action="/matches/new" method="get">
+   &nbsp;&nbsp;<button  class="btn add">Add new Match</button>
+  </form>
+    <%}  %>
+</body>

@@ -1,0 +1,82 @@
+ <% layout("/layouts/boilerplate.ejs") %>
+  <% block('matchesActive').append('active') %>
+  <% block('title').append('New Match') %>
+
+    <body>
+       
+        <form action="/matches" method="post" novalidate class=" row g-3 needs-validation" style="padding: 5px;">
+            <h3 class="ps-3" >First inning details:-</h3>
+            <div class="col-md-6">
+                <label for="" class="form-label ps-3">Team name:</label>
+            <input type="text" placeholder="Enter team name:" name="t1Name" required class="form-control">
+
+            </div>
+           <div class="col-md-6">
+            <label for="" class="form-label ps-3">Runs:</label>
+            <input type="number" name="t1R" class="form-control" required>
+           </div>
+           <div class="col-md-6">
+            <label for="" class="form-label ps-3">Wickets:</label>
+            <input type="number" name="t1W" class="form-control" required>
+           </div>
+            <div class="col-md-6">
+                <label for="" class="form-label ps-3">Overs:</label>
+            <input type="number" step="any" class="form-control" placeholder="ex: 6.4" name="t1O"
+                required>
+            </div>
+            
+
+            <h3 class="ps-3">Second inning details:-</h3>
+           <div class="col-md-6">
+                <label for="" class="form-label ps-3">Team name:</label>
+            <input type="text" placeholder="Enter team name:" name="t2Name" required class="form-control">
+
+            </div>
+           <div class="col-md-6">
+            <label for="" class="form-label ps-3">Runs:</label>
+            <input type="number" name="t2R" class="form-control" required>
+           </div>
+           <div class="col-md-6">
+            <label for="" class="form-label ps-3">Wickets:</label>
+            <input type="number" name="t2W" class="form-control" required>
+           </div>
+            <div class="col-md-6">
+                <label for="" class="form-label ps-3">Overs:</label>
+            <input type="number" step="any" class="form-control" placeholder="ex: 6.4" name="t2O"
+              required  >
+            </div>
+             <div class="col-md-6">
+                <label for="" class="form-label ps-3">Player of the match:</label>
+            <input type="text" step="any" class="form-control" placeholder="(optional)" name="motm">
+            </div>
+             <div class="col-md-6">
+                <label for="" class="form-label ps-3">Date:</label>
+            <input type="date" step="any" class="form-control" placeholder="(optional)" name="date"
+               required >
+            </div>
+            <button class="btn ms-3"
+                style="width: 200px; border-radius: 5px; background-color: #12203e; color: white;">Add
+                Match</button>
+        </form>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> <script>
+    (() => {
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+        </script>
+    </body>

@@ -1,0 +1,131 @@
+ <% layout("/layouts/boilerplate.ejs") %>
+  <% block('title').append('New Player') %>
+ <% block('playersActive').append('active') %>
+
+
+    
+     <form action="/players" method="POST" enctype="multipart/form-data" novalidate class=" row g-3 needs-validation" >
+
+     <br><br> 
+     <div class="col-md-6">
+       <label for="" class="form-label ps-3">Enter name:</label>
+      <input type="text" placeholder="Enter player's name:" name="name" required class="form-control">
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Enter player's name
+    </div>
+     </div>
+     <div class="col-md-6">
+       <label for="" class="form-label ps-3">Enter username:</label>
+      <input type="text" placeholder="Enter player's username:" name="username" required class="form-control">
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Enter player's username
+    </div>
+     </div>
+     <div class="col-md-6">
+       <label for="" class="form-label ps-3">Enter password:</label>
+      <input type="password" placeholder="Enter player's password:" name ="password" required class="form-control">
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      please enter password
+    </div>
+     </div>
+    <div class="col-md-6">
+        <label for="role" class="form-label ps-3">Select the role:</label>
+
+        <Select id="role" name="role" required class="form-select">
+        <option value="Batter">Batter</option>
+        <option value="Bowler">Bowler</option>
+        <option value="All-Rounder">All-Rounder</option>
+                <option value="Wicket-Keeper">Wicket Keeper</option>
+
+       </Select>
+    </div>
+             <br><br>
+      <div class="col-md-6">
+          <label for="batting" class="form-label ps-3">Batting:</label>
+<br>
+        <Select id="batting" name="batting" required class="form-select">
+        <option value="Right-Handed">Right-Handed</option>
+        <option value="Left-Handed">Left-Handed</option>
+       </Select> 
+      </div>
+          <br><br>
+          <div class="col-md-6">
+            <label for="bowling" class="form-label ps-3">Bowling:</label>
+<br>
+        <Select id="bowling" name="bowling" required class="form-select">
+        <option value="Right Arm Fast">Right Arm Fast</option>
+        <option value="Left Arm Fast">Left Arm Fast</option>
+        <option value="Right Arm Spin">Right Arm Spin</option>
+        <option value="Left Arm Spin">Left Arm Spin</option>
+        <option value="NA">No</option>
+       </Select>
+          </div>
+             <br><br>
+             <label for="age" class="form-label ps-3">Enter age:</label>
+
+       <input type="number" placeholder="ex:- 22" id="age" name="age"  class="form-control" required>
+        <div class="invalid-feedback">
+      Enter player's age!
+    </div><br><br>
+     <label for="jerseyNo" class="form-label ps-3">Enter jersey no. :</label>
+
+       <input type="number" placeholder="ex:- 45" id="jerseyNo" name="jerseyNo"  class="form-control" required>
+        <div class="invalid-feedback">
+      Enter player's jersey number!
+    </div>
+    <br><br>
+      <label for="" class="form-label ps-3">Upload your photo:</label>
+       <input type="file" name="img" accept="image/*" required class="form-control"><br> <br>
+<br>
+    <div class="col-12">
+    <div class="form-check ms-3">
+      <input class="form-check-input " type="checkbox" name="isAdmin" id="adminCheck" >
+      <label class="form-check-label" for="adminCheck">
+       Admin
+      </label>
+    </div>
+  </div>
+    <div class="col-12">
+    <div class="form-check ms-3">
+      <input class="form-check-input " type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+        <button class="btn ms-3" style=" width: 200px;border-radius: 5px; background-color: #12203e; color: white;" type="submit">Add Player</button>
+     </form>    
+      <script>
+        (() => {
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+     </script>
+

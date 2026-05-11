@@ -1,0 +1,32 @@
+ <% layout("/layouts/boilerplate.ejs") %>
+<% block('title').append('Edit-Profile') %>
+
+<h2 class="ps-3">Delete player: </h2>
+<form action="/players?_method=DELETE" method="post" class="  g-3 needs-validation" novalidate>
+    <label for="form-label" class="p-1 ps-3">Enter username of player:</label>
+    <input type="text" class="form-control m-3  w-50 d-bock" name="username" required>
+    <div class="invalid-feedback ps-3">Enter username!</div>
+    
+    <button class="btn ms-3 d-block" style="width: 200px; border-radius: 5px; background-color: #12203e; color:white;" type="submit">Delete</button>
+</form>
+      <script>
+        (() => {
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+     </script>
