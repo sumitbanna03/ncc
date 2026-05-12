@@ -73,7 +73,6 @@ nav{
     .players{
     display: flex;
     flex-wrap: wrap;
-    flex-flow: row;
     gap: 10px;
     
    
