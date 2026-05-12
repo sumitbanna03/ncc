@@ -6,21 +6,23 @@
 <div class="card">
 
   <!-- Hero -->
-  <div class="hero">
-    <div class="avatars">
-      <img src="<%= currUser.img.url %>" class="avatar"></img>
-      <a href="/profile/edit-img/<%= currUser._id %>"><button class=" edit-img">edit</button></a>
-    </div>
-    <div class="hero-info">
-      <div class="club-tag">Nihalwadi Cricket Club</div>
-      <div class="player-name"><%= currUser.name.slice(0,-1) %></div>
-      <div class="p.layerun"><%= currUser.username %></div>
-      <div class="role-badge">
-        <div class="role-dot"></div>
-        <%= currUser.role %>
-      </div>
+<div class="hero">
+  <div class="avatars">
+    <img src="<%= currUser.img.url %>" class="avatar" alt="Profile Photo"/>
+    <a href="/profile/edit-img/<%= currUser._id %>">
+      <button class="edit-img">Edit Photo</button>
+    </a>
+  </div>
+  <div class="hero-info">
+    <div class="club-tag">Nihalwadi Cricket Club</div>
+    <div class="player-name"><%= currUser.name.slice(0,-1) %></div>
+    <div class="player-username">@<%= currUser.username %></div>
+    <div class="role-badge">
+      <div class="role-dot"></div>
+      <%= currUser.role %>
     </div>
   </div>
+</div>
 
   <!-- Body -->
   <div class="body">
