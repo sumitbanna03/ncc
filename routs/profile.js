@@ -52,6 +52,7 @@ router.patch("/:id", asyncWrap(async(req,res,next)=>{
   role:role,
   batting:bat,
   bowling:bowl,
+  age:age,
   jerseyNo:jerseyNo,
   },
   {new: true});
