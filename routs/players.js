@@ -52,7 +52,7 @@ router.get("/",asyncWrap(async(req,res,next)=>{
 router.get("/profile/:id",asyncWrap(async (req,res,next)=>{
   const {id} = req.params;
   const player = await Player.findById(id);
-  res.render("player-Profile", {player});
+  res.render("player-profile", {player});
 }));
 router.get("/new",isAuthenticated,asyncWrap(async(req, res,next)=>{
     if(res.locals.currUser.isAdmin){
