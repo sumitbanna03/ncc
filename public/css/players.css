@@ -69,3 +69,13 @@ nav{
  .card-body{
     padding: 8px;
  }
+@media (min-width: 650px) {
+    .players{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    gap: 10px;
+    
+   
+}
+}
