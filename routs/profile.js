@@ -55,7 +55,7 @@ router.patch("/:id", asyncWrap(async(req,res,next)=>{
   age:age,
   jerseyNo:jerseyNo,
   },
-  {new: true});
+  { returnDocument: 'after', runValidators: true });
   req.login(updatedPlayer, (err) => {
     if (err) return next(err);
     req.flash("success","Profile updated");
