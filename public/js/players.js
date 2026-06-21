@@ -27,30 +27,36 @@ searchInput1.addEventListener('keyup', () => {
           resultsContainer.innerHTML = '<p>No players found</p>';
           return;
         }
-
+        
         players.forEach(player => {
           const card = document.createElement('div');
           card.classList.add('card');
-           card.classList.add('player');
+          
           let name = player.name.slice(0, -1);
-          let iconStr = player.role == "Batter"?`<img src="images/cricket-bat.png"  class="role-icon" ></img>`
-          :player.role == "Bowler"?` <img src="images/cricket-ball.png" style="padding: 5px;" class="role-icon"></img>`
-          :player.role == "Wicket-Keeper"?` <img src="images/keeper.png"  class="role-icon"></img>`
-          :` <img src="images/cricket.png"  class="role-icon"></img>`;
+          let  img = player.img.url.replace("/upload", "/upload/h_300,w_300,");
           card.innerHTML = `
-            
-      <div class="player-img-box">  <img src="${ player.img.url }" class="player-img" alt="Player image">`+
-     iconStr +
-          `
-</div>
-  <div class="card-body">
-    <h5 class="card-title">${name}</h5>
-    <p class="card-text">Batting:  ${player.batting} <br>
-      Bowling:  ${player.bowling}  <br>
-      Age: ${ player.age}  </p>
-    <a href="/players/profile/${player._id}" class="btn ">View Profile</a>
-  </div>
-
+          <div class="card-banner">
+      <span class="card-number">Ncc</span>
+      <span class="role-badge">${player.role}</span>
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <img src="${img}" class="avatar-placeholder"></img>
+        </div>
+      </div>    
+    </div>
+    <div class="card-body">
+      <h2 class="player-name">${name}</h2>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Batting</span><span class="stat-value">${player.batting}</span></div>
+        <div class="stat"><span class="stat-label">Bowling</span><span class="stat-value"> ${player.bowling}</span></div>
+      </div>
+      <div class="sep"></div>
+      <div class="meta-row">
+        <span class="age-pill">Age ${player.age}</span>
+        <span class="status-dot"><span class="dot"></span>Active</span>
+      </div>
+      <a href="/players/profile/<%= player._id %>" class="btn">View Profile →</a>
+    </div>
           `;
 
           resultsContainer.appendChild(card);
@@ -81,32 +87,37 @@ searchInput2.addEventListener('keyup', () => {
           resultsContainer.innerHTML = '<p>No players found</p>';
           return;
         }
-
+      
         players.forEach(player => {
-          const card = document.createElement('div');
+         const card = document.createElement('div');
           card.classList.add('card');
-           card.classList.add('player');
+          
           let name = player.name.slice(0, -1);
-          let iconStr = player.role == "Batter"?`<img src="images/cricket-bat.png"  class="role-icon" ></img>`
-          :player.role == "Bowler"?` <img src="images/cricket-ball.png" style="padding: 5px;" class="role-icon"></img>`
-          :player.role == "Wicket-Keeper"?` <img src="images/keeper.png"  class="role-icon"></img>`
-          :` <img src="images/cricket.png"  class="role-icon"></img>`;
+          let  img = player.img.url.replace("/upload", "/upload/h_300,w_300,");
           card.innerHTML = `
-            
-      <div class="player-img-box">  <img src="${ player.img.url }" class="player-img" alt="Player image">`+
-     iconStr +
-          `
-</div>
-  <div class="card-body">
-    <h5 class="card-title">${name}</h5>
-    <p class="card-text">Batting:  ${player.batting} <br>
-      Bowling:  ${player.bowling}  <br>
-      Age: ${ player.age}  </p>
-    <a href="/players/profile/${player._id}" class="btn ">View Profile</a>
-  </div>
-
+          <div class="card-banner">
+      <span class="card-number">Ncc</span>
+      <span class="role-badge">${player.role}</span>
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <img src="${img}" class="avatar-placeholder"></img>
+        </div>
+      </div>    
+    </div>
+    <div class="card-body">
+      <h2 class="player-name">${name}</h2>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Batting</span><span class="stat-value">${player.batting}</span></div>
+        <div class="stat"><span class="stat-label">Bowling</span><span class="stat-value"> ${player.bowling}</span></div>
+      </div>
+      <div class="sep"></div>
+      <div class="meta-row">
+        <span class="age-pill">Age ${player.age}</span>
+        <span class="status-dot"><span class="dot"></span>Active</span>
+      </div>
+      <a href="/players/profile/${player._id}" class="btn">View Profile →</a>
+    </div>
           `;
-
           resultsContainer.appendChild(card);
         });
       });

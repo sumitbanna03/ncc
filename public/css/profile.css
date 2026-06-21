@@ -62,8 +62,8 @@
 }
 
 .avatar {
-  width: 200px;               /* bigger */
-  height: 200px;              /* bigger */
+  width: 300px;               /* bigger */
+  height: 300px;              /* bigger */
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.6);

@@ -35,8 +35,11 @@
           <div class="profile-header">
              
             <div class="profile-avatar">
-              <% if(currUser){ %>
-              <img style="background-size: cover; height: 100%;width: 100%;border-radius: 50%;" src="<%= currUser.img.url %>" alt="">
+              <% if(currUser){ 
+               
+         let img = currUser.img.url.replace("/upload", "/upload/h_100,w_100,");
+       %>
+              <img style="background-size: cover; height: 100%;width: 100%;border-radius: 50%;" src="<%= img %>" alt="">
               <% }else{ %>
               <i class="fa-solid fa-user"></i>
               <% } %>

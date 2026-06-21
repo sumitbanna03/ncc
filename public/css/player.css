@@ -1,0 +1,324 @@
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange:    #F5620F;
+    --orange-dk: #C24400;
+    --orange-lt: #FF8C42;
+    --amber:     #FFB020;
+    --bg:        #F4F5F7;
+    --surface:   #FFFFFF;
+    --surface2:  #F0F0F0;
+    --text:      #1A1A2E;
+    --muted:     #8A8A9A;
+    --border:    rgba(0,0,0,0.08);
+    --radius:    18px;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    /* min-height: 100vh;
+    padding: 40px 16px 60px; */
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .page-header .eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .page-header .underline-bar {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--amber));
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+
+  /* ── Grid: 2-col on mobile, up to 4 on desktop ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 700px) {
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  }
+  @media (min-width: 1000px) {
+    .grid { grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  }
+
+  /* ── Card ── */
+  .card {
+    position: relative;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--amber), var(--orange));
+    background-size: 200%;
+    animation: shimmer 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+  .card:hover::before { opacity: 1; }
+  .card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow:
+      0 16px 48px rgba(245, 98, 15, 0.14),
+      0 4px 16px rgba(0,0,0,0.08);
+  }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ── Card Banner ── */
+  .card-banner {
+    position: relative;
+    height: 90px;
+    background: linear-gradient(135deg, #fff3ec 0%, #ffe0cc 60%, #fff3ec 100%);
+    overflow: visible;
+  }
+  .card-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(245,98,15,0.12) 0%, transparent 65%);
+  }
+  .card-number {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: rgba(245,98,15,0.10);
+    line-height: 1;
+    letter-spacing: -2px;
+    z-index: 1;
+    user-select: none;
+  }
+  .role-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(245,98,15,0.35);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    z-index: 3;
+  }
+
+  /* ── Avatar — centered, large, overlapping banner ── */
+  .avatar-wrap {
+    position: absolute;
+    bottom: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+  }
+  .avatar-ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    box-shadow:
+      0 6px 24px rgba(245,98,15,0.35),
+      0 0 0 4px #fff;
+  }
+  .avatar-ring img,
+  .avatar-ring .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--orange);
+  }
+
+  /* ── Card Body ── */
+  .card-body {
+    padding: 54px 14px 18px;
+    text-align: center;
+  }
+  .player-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  /* ── Stats ── */
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 5px 8px;
+  }
+  .stat-icon {
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .stat-label {
+    color: var(--muted);
+    flex-shrink: 0;
+    font-size: 10px;
+    width: 42px;
+  }
+  .stat-value {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 10.5px;
+  }
+
+  /* ── Sep ── */
+  .sep {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,98,15,0.2), transparent);
+    margin-bottom: 12px;
+  }
+
+  /* ── Meta row ── */
+  .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .age-pill {
+    background: rgba(255,176,32,0.12);
+    border: 1px solid rgba(255,176,32,0.35);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    color: #a06000;
+    font-weight: 600;
+  }
+  .status-dot {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 5px #22c55e;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+
+  /* ── Button ── */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px 6px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dk) 100%);
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.2s, transform 0.15s;
+    text-decoration: none;
+    text-align: center;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.4s ease;
+  }
+  .btn:hover::after { left: 150%; }
+  .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); filter: brightness(0.95); }
+
+  /* ── Larger avatar on tablet+ ── */
+  @media (min-width: 700px) {
+    .card-banner { height: 110px; }
+    .avatar-ring { width: 100px; height: 100px; }
+    .avatar-wrap { bottom: -50px; }
+    .card-body { padding: 62px 20px 22px; }
+    .player-name { font-size: 18px; }
+    .stat { font-size: 12px; }
+    .stat-label { font-size: 11px; width: 52px; }
+    .stat-value { font-size: 12px; }
+    .btn { font-size: 14px; padding: 11px; }
+    .role-badge { font-size: 10px; padding: 3px 10px; }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .card, .btn, .card::before, .dot { transition: none; animation: none; }
+  }
