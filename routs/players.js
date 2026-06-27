@@ -45,7 +45,7 @@ const upload = multer({
 router.get("/",asyncWrap(async(req,res,next)=>{
  
  const result=  await Player.find();
-    res.render("player.ejs", {players:result});
+    res.render("players.ejs", {players:result});
    
    
 }));

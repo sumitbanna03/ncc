@@ -257,7 +257,7 @@
     font-size: 10px;
     color: var(--muted);
   }
-  .dot {
+  .dots {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: #22c55e;

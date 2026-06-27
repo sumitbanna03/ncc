@@ -1,95 +1,285 @@
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #ffefa6;
-    
-   
-}
-.add{
-    font-weight: 500;
-    height: 35px;
-    color: #1c4804;
-     background:linear-gradient(#4baf7f,#42988d);
-    border-radius: 5px;
-}
-.matches{
-    width: 100%;
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange:    #F5620F;
+    --orange-dk: #C24400;
+    --orange-lt: #FF8C42;
+    --amber:     #FFB020;
+    --green:     #16A34A;
+    --green-lt:  #DCFCE7;
+    --bg:        #F4F5F7;
+    --surface:   #FFFFFF;
+    --text:      #1A1A2E;
+    --muted:     #7A7A8A;
+    --border:    rgba(0,0,0,0.07);
+    --radius:    16px;
+  }
+
+  body {
+    background: var(--bg);
+    font-family:  sans-serif;
+    color: var(--text);
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .page-header .eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .underline-bar {
+    width: 50px; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--amber));
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* ── List ── */
+  .match-list {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: transform 0.28s cubic-bezier(.22,.68,0,1.2), box-shadow 0.28s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(245,98,15,0.13), 0 4px 14px rgba(0,0,0,0.08);
+  }
+  /* left accent bar */
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--orange), var(--amber));
+    border-radius: 4px 0 0 4px;
+  }
+
+  /* ── Top strip: date + status ── */
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px 10px 20px;
+    border-bottom: 1px solid var(--border);
+    background: #fafafa;
+  }
+  .match-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .match-date svg { opacity: 0.5; }
+  .match-status {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .status-completed {
+    background: #EFF6FF;
+    color: #2563EB;
+    border: 1px solid #BFDBFE;
+  }
+  .status-live {
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+    animation: pulse-live 1.5s infinite;
+  }
+  @keyframes pulse-live {
+    0%,100% { opacity: 1; } 50% { opacity: 0.6; }
+  }
+
+  /* ── Scoreboard ── */
+  .scoreboard {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 18px 20px 14px;
     gap: 10px;
-}
-.match{
-    padding: 0;
-   
-    height: 150px;
-    width: 95%;
-    max-width: 400px;
-    min-width: 280px;
-    background:  linear-gradient(#fbf276,#fab265 );;
-    border-radius: 15px;
-    padding-top: 10px;
-     box-shadow: 0 1px 5px 0 #3a3939;
-     margin-bottom: 15px;
-}
-.t-name{
-    width: 100%;
+  }
+  .team { display: flex; flex-direction: column; gap: 4px; }
+  .team.home { text-align: left; }
+  .team.away { text-align: right; }
+
+  .team-name {
+    font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .team-name.winner { color: var(--orange); }
+
+  .score {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .score.winner { color: var(--orange); }
+
+  .overs {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── VS badge ── */
+  .vs-badge {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
     display: flex;
-    justify-content: space-evenly;
-}
-h3{
-    margin-top: 5px;
-    width: 50%;
-    
-    text-align:center ;
-    display: inline;
-    font-weight:600;
-    margin-bottom: 5px;
-    color: #9e0000;
-   
-}
-.scores{
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(245,98,15,0.3);
+  }
+
+  /* ── Result banner ── */
+  .result-strip {
+    margin: 0 16px 14px 20px;
+    background: linear-gradient(90deg, rgba(22,163,74,0.08), transparent);
+    border-left: 3px solid var(--green);
+    border-radius: 0 6px 6px 0;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
     display: flex;
-    justify-content: space-around;
-}
-.score{
-    
-    font-size: 1.3rem;
+    align-items: center;
+    gap: 6px;
+  }
+  .result-strip.loss {
+    background: linear-gradient(90deg, rgba(245,98,15,0.08), transparent);
+    border-left-color: var(--orange);
+    color: var(--orange-dk);
+  }
+
+  /* ── Footer: POTM ── */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px 12px 20px;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(90deg, #fff8f4, #fff);
+  }
+  .potm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .potm-icon {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(245,98,15,0.25);
+  }
+  .potm-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    line-height: 1;
+  }
+  .potm-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .potm-name.empty {
+    color: var(--muted);
+    font-style: italic;
     font-weight: 400;
-    
-    display: inline;
-    color: #0e073d;
-
-}
-.winLine{
-    color: #01450b;
-    margin: 0;
-    margin-left: 10vw;
-
-    font-size: 1.1rem;
-}
-.potm{
-    
-    position:relative;
-    bottom: -5.5px;
-    border-radius:0 0 15px 15px ;
-    width: 100%;
-    margin: 0;
-     padding-left: 4vw;
-     background:linear-gradient(#156152,#0e5e3e);
-    color: white;
-}
-.date{
-   position: absolute;
-   right: 7px;
-}
-.cut-icon{
-    position:relative;
-    top: -8px;
-    right: 3px;
-    height: 25px;
-    width: 25px;
-    font-size: 20px;
-
-}
+  }
+  .view-btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: rgba(245,98,15,0.08);
+    border: 1px solid rgba(245,98,15,0.25);
+    border-radius: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .view-btn:hover {
+    background: var(--orange);
+    color: #fff;
+  }
+  .btn {
+    width: 200px;
+    padding: 10px 6px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dk) 100%);
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.2s, transform 0.15s;
+    text-decoration: none;
+    text-align: center;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .view-btn { transition: none; animation: none; }
+  }
