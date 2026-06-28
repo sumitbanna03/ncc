@@ -103,7 +103,7 @@ app.get("/",asyncWrap(async(req,res,next)=>{
   const pCount = await Player.countDocuments();
   const mCount = await Matche.countDocuments();
   
-    res.render("home.ejs",{pCount,mCount});
+    res.render("homepage.ejs",{pCount,mCount});
 }));
 
 app.get("/login", (req,res)=>{

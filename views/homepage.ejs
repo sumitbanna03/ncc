@@ -1,0 +1,139 @@
+<% layout("/layouts/boilerplate.ejs") %>
+  <% block('title').append('Home') %>
+
+ <% block('style').append('css/homepage.css') %>
+ <% block('homeActive').append('active') %>
+
+
+<body>
+
+
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <!-- <div class="hero-eyebrow">Est. Nihalwadi, M.P.</div> -->
+      <h1 class="hero-title">Welcome to<br><span>Nihalwadi</span><br>Cricket Club</h1>
+      <!-- <p class="hero-sub">A passionate community team known for strong teamwork, sportsmanship, and nurturing young local talent on the pitch.</p> -->
+      <a href="/players" class="hero-cta">
+        Explore Players
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon-wrap orange"><i class="fa-solid fa-drum-steelpan"></i></div>
+        <div>
+          <div class="stat-num"><%= mCount %> </div>
+          <div class="stat-lbl">Matches Played</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap navy"><i class="fa-regular fa-user"></i></div>
+        <div>
+          <div class="stat-num"><%= pCount %> </div>
+          <div class="stat-lbl">Registered Players</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap amber"><i class="fa-solid fa-trophy"></i></div>
+        <div>
+          <div class="stat-num">2</div>
+          <div class="stat-lbl">Tournament Prizes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUICK LINKS ── -->
+<div class="quick-bar">
+  <div class="quick-inner">
+    <a href="/players" class="quick-item">
+      <div class="quick-icon"><i class="fa-solid fa-user"></i></div>
+      <div>
+        <div class="quick-title">Our Players</div>
+        <div class="quick-desc">View full squad & profiles</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+    <a href="/matches" class="quick-item">
+      <div class="quick-icon"><i class="fa-regular fa-clipboard"></i></div>
+      <div>
+        <div class="quick-title">Match Results</div>
+        <div class="quick-desc">Scores, POTM & summaries</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+    <a href="#memories" class="quick-item">
+      <div class="quick-icon"><i class="fa-solid fa-photo-film"></i></div>
+      <div>
+        <div class="quick-title">Memories</div>
+        <div class="quick-desc">Tournament photos & gallery</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<div class="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-label">About the Club</div>
+    </div>
+    <div>
+      <div class="about-divider"></div>
+      <p class="about-text">Nihalwadi Cricket Club is a passionate and growing cricket team known for its strong teamwork and sportsmanship. The club actively participates in local tournaments and promotes young talent. With dedication and regular practice, players continue to improve their skills and performance. The team maintains a competitive spirit while respecting the values of the game — and is fast becoming a proud name in the local cricket community.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOURNAMENT MEMORIES ── -->
+<section class="section memories-bg"id="memories">
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="section-header">
+      <div class="section-eyebrow"><i class="fa-solid fa-photo-film"></i> Gallery</div>
+      <h2 class="section-title">Tournament <span>Memories</span></h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="memories-grid" >
+
+      <div class="memory-card">
+        <div class="memory-img-wrap">
+          <img src="https://res.cloudinary.com/drupkujzt/image/upload/v1778128596/nccT03_kayxhy.jpg" alt="Songir Tournament">
+          <div class="memory-img-overlay"></div>
+          <span class="memory-prize prize-2nd">🥈 2nd Prize</span>
+        </div>
+        <div class="memory-body">
+          <div class="memory-tournament">Songir Tournament</div>
+          <div class="memory-meta">
+            <span>📍 Songir</span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="memory-card">
+        <div class="memory-img-wrap">
+          <img src="https://res.cloudinary.com/drupkujzt/image/upload/v1778128593/nccmitaval01_lq0exr.jpg" alt="Mitawal Tournament">
+          <div class="memory-img-overlay"></div>
+          <span class="memory-prize prize-1st">🥇 1st Prize</span>
+        </div>
+        <div class="memory-body">
+          <div class="memory-tournament">Mitawal Tournament</div>
+          <div class="memory-meta">
+            <span>📍 Mitawal</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</body>
