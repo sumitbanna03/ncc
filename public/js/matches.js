@@ -70,7 +70,7 @@ searchInput1.addEventListener('keyup', () => {
         ? `${match.t1Name} won by ${match.t1Runs - match.t2Runs} runs` 
         : match.t1Runs < match.t2Runs 
           ? `${match.t2Name} won by ${10 - match.t2Wickets} wickets` 
-          : 'Match draw'
+          : 'Match tied'
       }
     </div>
     <div class="card-footer">
@@ -165,7 +165,7 @@ searchInput2.addEventListener('keyup', () => {
                   ? `${team1} won by ${Number(match.t1Runs) - Number(match.t2Runs)} runs` 
                   : Number(match.t1Runs) < Number(match.t2Runs) 
                     ? `${team2} won by ${10 - Number(match.t2Wickets)} wickets` 
-                    : 'Match draw'
+                    : 'Match tied'
                 }
               </div>
               <div class="card-footer">
