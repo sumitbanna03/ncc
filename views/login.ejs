@@ -3,68 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login </title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <meta name="theme-color" content="#06283d">
+    <title>Login | NCC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/login.css">
-   
 </head>
 <body>
-   <% if(success.length) {%>
-    <div class="alert alert-success alert-dismissible fade show">
-      <%= success %>
-      <button class="btn-close" data-bs-dismiss="alert" area-label="closed" style=" max-width: 650px;"></button>
-    </div>
-    <% } %>
-    <% if(error.length) {%>
-    <div class="alert alert-danger alert-dismissible fade show" style=" max-width: 650px;">
-      <%= error %>
-      <button class="btn-close" data-bs-dismiss="alert" area-label="closed"></button>
-    </div>
-    <% } %>
-    <form class="needs-validation container" novalidate method="POST" action="/login">
-        <h2><i class="fa-solid fa-user"></i> Login</h2><br>
-        <div class="input">
-            <label for="un">Username</label>
-            <input id="un" type="text" name="username" required class="form-control" >
-            <div class="invalid-feedback">
-                username required!
+    <main class="login-page">
+        <a class="brand" href="/" aria-label="NCC home">
+              <img src="https://res.cloudinary.com/drupkujzt/image/upload/v1778130278/ncb_logo_h6eywy.jpg" class="logo-mark" alt="NCC Logo">
+            <span class="brand-name">NCC <span>NIHALWADI CRICKET CLUB</span></span>
+        </a>
+
+        <section class="login-shell" aria-label="Sign in to NCC">
+            <!-- <div class="welcome-panel">
+                <div class="welcome-copy">
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> The club is calling</p>
+                    <h1>Your next<br>innings <span>starts here.</span></h1>
+                    <p class="welcome-description">Step back into the game. Catch up with your team, follow every fixture, and make this season count.</p>
+                    <div class="season-note">
+                        <span class="season-icon" aria-hidden="true">✦</span>
+                        <span>One team. Every match. All heart.</span>
+                    </div>
+                </div>
+                <div class="field-art" aria-hidden="true">
+                    <span class="field-ring field-ring-one"></span>
+                    <span class="field-ring field-ring-two"></span>
+                    <span class="field-ring field-ring-three"></span>
+                    <span class="field-ball"></span>
+                    <span class="field-stumps"><i></i><i></i><i></i></span>
+                </div>
+                <span class="panel-caption">PLAY TOGETHER · PLAY FOR NCC</span>
+            </div> -->
+
+            <div class="form-panel">
+                <div class="form-heading">
+                    <p class="form-kicker">WELCOME BACK</p>
+                    <h2>Sign in</h2>
+                    <p>Good to have you back. Enter your details below.</p>
+                </div>
+
+                <% if (success && success.length) { %>
+                    <div class="form-alert success-alert" role="status">
+                        <span class="alert-icon" aria-hidden="true">✓</span>
+                        <span><%= success %></span>
+                        <button class="alert-close" type="button" aria-label="Dismiss message">&times;</button>
+                    </div>
+                <% } %>
+                <% if (error && error.length) { %>
+                    <div class="form-alert error-alert" role="alert">
+                        <span class="alert-icon" aria-hidden="true">!</span>
+                        <span><%= error %></span>
+                        <button class="alert-close" type="button" aria-label="Dismiss message">&times;</button>
+                    </div>
+                <% } %>
+
+                <form class="login-form" method="POST" action="/login" novalidate>
+                    <div class="form-field">
+                        <label for="username">Username</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="8" r="3.5"></circle>
+                                <path d="M5 20c.5-3.5 2.8-5.5 7-5.5s6.5 2 7 5.5"></path>
+                            </svg>
+                            <input id="username" type="text" name="username" placeholder="Enter your username" autocomplete="username" autocapitalize="none" required>
+                        </div>
+                        <span class="field-error">Please enter your username.</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                                <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                            </svg>
+                            <input id="password" type="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                            <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"></path>
+                                    <circle cx="12" cy="12" r="2.5"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="field-error">Please enter your password.</span>
+                        <span class="caps-warning" aria-live="polite">Caps Lock is on</span>
+                    </div>
+
+                    <button class="submit-button" type="submit">
+                        <span>Sign in to NCC</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <a class="home-link" href="/">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                    Back to home
+                </a>
+                <p class="form-footnote">NCC <span>·</span> Together in every innings</p>
             </div>
-            <label for="pass">Password</label>
-            <input id="pass" type="password" name="password" required class="form-control">
-            <div class="invalid-feedback">
-                please enter password
-            </div>
-        </div>
-        <button>Login</button>
-    </form>
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        </section>
+    </main>
 
-     <script>
-      
-              (() => {
+    <script>
+        const form = document.querySelector(".login-form");
+        const passwordInput = document.querySelector("#password");
+        const passwordToggle = document.querySelector(".password-toggle");
+        const capsWarning = document.querySelector(".caps-warning");
 
-  'use strict'
+        form.addEventListener("submit", (event) => {
+            form.classList.add("was-validated");
+            const isValid = form.checkValidity();
+            form.querySelectorAll(".form-field").forEach((field) => {
+                field.classList.toggle("is-invalid", !field.querySelector("input").checkValidity());
+            });
+            if (!isValid) {
+                event.preventDefault();
+                form.querySelector(":invalid").focus();
+            }
+        });
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
+        form.querySelectorAll("input").forEach((input) => {
+            input.addEventListener("input", () => {
+                if (form.classList.contains("was-validated")) {
+                    input.closest(".form-field").classList.toggle("is-invalid", !input.checkValidity());
+                }
+            });
+        });
 
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
+        passwordToggle.addEventListener("click", () => {
+            const showingPassword = passwordInput.type === "password";
+            passwordInput.type = showingPassword ? "text" : "password";
+            passwordToggle.setAttribute("aria-label", showingPassword ? "Hide password" : "Show password");
+            passwordToggle.setAttribute("aria-pressed", String(showingPassword));
+        });
 
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-        </script>
+        passwordInput.addEventListener("keyup", (event) => {
+            capsWarning.classList.toggle("is-visible", event.getModifierState("CapsLock"));
+        });
+        passwordInput.addEventListener("blur", () => capsWarning.classList.remove("is-visible"));
+
+        document.querySelectorAll(".alert-close").forEach((button) => {
+            button.addEventListener("click", () => button.parentElement.remove());
+        });
+    </script>
 </body>
 </html>

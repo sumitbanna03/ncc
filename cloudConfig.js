@@ -7,12 +7,11 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET
 });
 
-   // 2. Configure Cloudinary Storage for Multer
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'ncc_players', // Folder name in your Cloudinary dashboard
-    allowed_formats: ['jpg', 'png', 'jpeg'],
+    folder: 'ncc_players', 
+    allowed_formats: ['jpg', 'png', 'jpeg','webp','svg'],
   },
 });
 module.exports ={
